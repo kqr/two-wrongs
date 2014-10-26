@@ -1,0 +1,12 @@
+
+<article>
+    <header>
+        <h1>#{entryTitle entry}
+        <address>by ~kqr
+        $maybe published <- entryPublished entry
+            <time pubdate datetime=#{showGregorian published}>
+                #{showGregorian published}
+
+
+    #{entryContent entry}
+

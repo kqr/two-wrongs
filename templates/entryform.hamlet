@@ -1,0 +1,6 @@
+
+<div .row>
+    <form method=post action=@{next} enctype=#{enctype}>
+        ^{formFields}
+        <button type=submit .btn .btn-default>Save
+
