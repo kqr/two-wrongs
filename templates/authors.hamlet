@@ -1,0 +1,18 @@
+
+
+<div .row>
+    <form method=post action=@{AuthorsR} enctype=#{enctype}>
+        ^{formFields}
+        <button type=submit .btn .btn-default>Add Author
+
+
+
+$if null authors
+    <p>No authors registered. How the fuck are you viewing this authors-only page?
+$else
+<p>Registered authors:
+<ul>
+    $forall author <- authors
+        <li>#{authorsUid author}
+
+

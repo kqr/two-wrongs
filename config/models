@@ -1,0 +1,10 @@
+Authors
+    uid Text
+    UniqueUid uid
+Entry
+    title Text
+    slug Text
+    published Day Maybe
+    content Html
+    UniqueSlug slug
+
