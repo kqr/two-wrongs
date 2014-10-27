@@ -70,9 +70,9 @@ instance Yesod App where
         -- you to use normal widget features in default-layout.
 
         pc <- widgetToPageContent $ do
---            addStylesheet $ StaticR css_bootstrap_css
             addStylesheetRemote "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
             addStylesheetRemote "http://cloud.webtype.com/css/bfc07ec5-8efd-4b0d-b1e1-7fb291d9edb0.css"
+            addStylesheetRemote "http://fonts.googleapis.com/css?family=Droid+Sans+Mono"
             $(widgetFile "standard")
         withUrlRenderer $(hamletFile "templates/base.hamlet")
 
@@ -90,6 +90,7 @@ instance Yesod App where
     isAuthorized _         True = requiresAuthor
     isAuthorized AuthorsR  _    = requiresAuthor
     isAuthorized NewR      _    = requiresAuthor
+    isAuthorized (EditR _) _    = requiresAuthor
 
     -- All other routes are open to the world
     isAuthorized _         _    = return Authorized

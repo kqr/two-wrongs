@@ -49,7 +49,7 @@ postNewR = do
     FormSuccess entry -> do
       exists <- runDB (insertUnique entry)
       case exists of
-        Just _  -> setMessage "Blog entry successfully added" >> redirect HomeR
+        Just _  -> setMessage "Blog entry successfully added" >> redirect (EntryR (entrySlug entry))
         Nothing -> setMessage "That slug already leads to a different entry"
     _ -> setMessage "Invalid form submission, check for errors"
         
@@ -76,7 +76,7 @@ postEditR slug = do
       key <- fmap entityKey (runDB (getBy404 (UniqueSlug slug)))
       runDB (repsert key entry)
       setMessage "Blog entry successfully edited"
-      redirect HomeR
+      redirect (EntryR slug)
     _ -> setMessage "Invalid form submission, check for errors"
         
   defaultLayout $ do
