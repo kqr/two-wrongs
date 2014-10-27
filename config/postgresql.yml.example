@@ -8,11 +8,11 @@
 #    PGDATABASE
 
 Default: &defaults
-  user: two_wrongs
-  password: two_wrongs
+  user: two-wrongs
+  password: two-wrongs
   host: localhost
   port: 5432
-  database: two_wrongs
+  database: two-wrongs
   poolsize: 10
 
 Development:

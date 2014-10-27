@@ -30,4 +30,4 @@ $doctype 5
         <main role="main">
           ^{pageBody pc}
         <footer>
-            <p>Rants by ~kqr about software development and stuff
+            <p>Sometimes I wonder if the guy who wrote that code was playing bingo with anti-patterns.
