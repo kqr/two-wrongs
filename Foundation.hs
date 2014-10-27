@@ -19,6 +19,7 @@ import Text.Jasmine (minifym)
 import Text.Hamlet (hamletFile)
 import Yesod.Core.Types (Logger)
 import Data.Text (Text)
+import Data.Functor ((<$>))
 
 
 -- | The site argument for your application. This can be a good place to
@@ -62,6 +63,7 @@ instance Yesod App where
     defaultLayout widget = do
         master <- getYesod
         mmsg <- getMessage
+        authed <- maybe False (const True) <$> maybeAuthId
 
         -- We break up the default layout into two components:
         -- default-layout is the contents of the body tag, and
@@ -90,6 +92,7 @@ instance Yesod App where
     isAuthorized _         True = requiresAuthor
     isAuthorized AuthorsR  _    = requiresAuthor
     isAuthorized NewR      _    = requiresAuthor
+    isAuthorized DraftsR   _    = requiresAuthor
     isAuthorized (EditR _) _    = requiresAuthor
 
     -- All other routes are open to the world

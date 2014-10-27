@@ -1,3 +1,11 @@
 $maybe msg <- mmsg
     <div #message>#{msg}
+
+<div #auth>
+    $if authed
+        <a href=@{AuthR LogoutR}>
+            <i .fa .fa-sm .fa-unlock>
+    $else
+        <a href=@{AuthR LoginR}>
+            <i .fa .fa-sm .fa-lock>
 ^{widget}

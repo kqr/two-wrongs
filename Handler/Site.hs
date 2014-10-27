@@ -12,7 +12,15 @@ getHomeR = do
   entries <- fmap (map entityVal) (runDB (selectList [EntryPublished !=. Nothing] [Desc EntryPublished]))
   defaultLayout $ do
     setTitle "Two Wrongs"
-    $(widgetFile "homepage")
+    $(widgetFile "article_list")
+
+
+getDraftsR :: Handler Html
+getDraftsR = do
+  entries <- fmap (map entityVal) (runDB (selectList [EntryPublished ==. Nothing] [Asc EntryId]))
+  defaultLayout $ do
+    setTitle "Two Wrongs"
+    $(widgetFile "article_list")
 
 
 

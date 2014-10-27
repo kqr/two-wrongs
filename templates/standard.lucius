@@ -14,6 +14,30 @@ a {
     font-size: 80%;
 }
 
+#auth {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 8px;
+
+    a {
+        color: #aaa;
+    }
+}
+
+#message {
+    width: 100%;
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    background-color: #f9c56b;
+    font-family: Helvetica, Arial;
+    font-size: 14px;
+    text-align: center;
+    padding: 4px;
+}
+
 body > header {
     font-family: Helvetica, Arial;
     margin-left: 64px;

@@ -8,6 +8,7 @@
 /authors      AuthorsR     GET POST
 /new          NewR         GET POST
 /edit/#Text   EditR        GET POST
+/drafts       DraftsR      GET
 !/#Text       EntryR       GET
 
 
