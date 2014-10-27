@@ -90,10 +90,7 @@ instance Yesod App where
     isAuthorized _         True = requiresAuthor
     isAuthorized AuthorsR  _    = requiresAuthor
     isAuthorized NewR      _    = requiresAuthor
-<<<<<<< HEAD
-=======
     isAuthorized (EditR _) _    = requiresAuthor
->>>>>>> 23813dd1c5b1b475ce19b4573c9d3655b37ea4e0
 
     -- All other routes are open to the world
     isAuthorized _         _    = return Authorized
