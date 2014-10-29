@@ -94,7 +94,7 @@ article {
         margin-right: auto;
 
         h1 {
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
             font-size: 3em;
             font-weight: bold;
             font-style: normal;
@@ -138,22 +138,36 @@ article {
         margin-top: 0;
     }
 
-    kbd {
-        font-face: 'Droid Sans Mono';
-        font-size: 0.7em;
-        background-color: #eee;
-        padding: 4px;
-    }
+}
 
-    img {
-        padding: 4px;
-        margin: 8px;
-    }
-    .center-img {
-        display: block;
-        margin: 32px auto 32px auto;
-        clear: both;
-    }
+kbd {
+    font-face: 'Droid Sans Mono';
+    font-size: 0.7em;
+    background-color: #eee;
+    padding: 4px;
+}
+
+img {
+    padding: 4px;
+    margin: 8px;
+}
+.center-img {
+    display: block;
+    margin: 32px auto 32px auto;
+    clear: both;
+}
+
+hr {
+    margin-top: 64px;
+    margin-bottom: 64px;
+    color: #aaa;
+    border: none;
+    width: 50px;
+}
+hr::before {
+    text-align: center;
+    content: "* * *";
+    width: 40px;
 }
 
 footer {
