@@ -144,8 +144,17 @@ article {
         background-color: #eee;
         padding: 4px;
     }
-}
 
+    img {
+        padding: 4px;
+        margin: 8px;
+    }
+    .center-img {
+        display: block;
+        margin: 32px auto 32px auto;
+        clear: both;
+    }
+}
 
 footer {
     width: 70%;
