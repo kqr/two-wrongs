@@ -179,7 +179,7 @@ article {
 }
 
 kbd {
-    font-face: 'Droid Sans Mono';
+    font-face: 'Droid Sans Mono' !important;
     font-size: 0.7em;
     background-color: #eee;
     padding: 4px;

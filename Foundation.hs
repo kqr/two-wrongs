@@ -79,6 +79,7 @@ instance Yesod App where
             addStylesheetRemote "http://cloud.webtype.com/css/bfc07ec5-8efd-4b0d-b1e1-7fb291d9edb0.css"
             addStylesheetRemote "http://fonts.googleapis.com/css?family=Droid+Sans+Mono"
             addStylesheetRemote "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+            addScriptRemote "http://code.jquery.com/jquery-latest.min.js"
             addScriptRemote "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"
             $(widgetFile "standard")
         withUrlRenderer $(hamletFile "templates/base.hamlet")
