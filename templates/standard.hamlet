@@ -10,7 +10,12 @@ $maybe msg <- mmsg
             <input type="hidden" name="openid_identifier" value="https://openid.stackexchange.com/">
             <button #signin type="submit">
                 <i .fa .fa-sm .fa-lock>
-^{widget}
+<div .container>
+    <div .row>
+        <main .col-sm-8>
+            ^{widget}
+        <nav .col-sm-3 .col-sm-offset-1>
+            ^{navigation}
 
 
 

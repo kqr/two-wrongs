@@ -11,15 +11,23 @@ getHomeR :: Handler Html
 getHomeR = do
   entries <- fmap (map entityVal) (runDB (selectList [EntryPublished !=. Nothing] [Desc EntryPublished]))
   defaultLayout $ do
-    setTitle "Two Wrongs"
+    setTitle "Two Wrongs, Recent"
     $(widgetFile "article_list")
+
+
+getAboutR :: Handler Html
+getAboutR =
+  defaultLayout $ do
+    setTitle "Two Wrongs, About"
+    $(widgetFile "about")
+
 
 
 getDraftsR :: Handler Html
 getDraftsR = do
   entries <- fmap (map entityVal) (runDB (selectList [EntryPublished ==. Nothing] [Asc EntryId]))
   defaultLayout $ do
-    setTitle "Two Wrongs"
+    setTitle "Two Wrongs, Drafts"
     $(widgetFile "article_list")
 
 
@@ -29,7 +37,7 @@ getEntryR slug = do
   entry <- fmap entityVal (runDB (getBy404 (UniqueSlug slug)))
   author <- isAuthor
   defaultLayout $ do
-    setTitle ("Two Wrongs :: " <> toHtml (entryTitle entry))
+    setTitle ("Two Wrongs, " <> toHtml (entryTitle entry))
     $(widgetFile "detail")
 
 
@@ -46,7 +54,7 @@ getNewR = do
   let next = NewR
   (formFields, enctype) <- generateFormPost (entryForm Nothing)
   defaultLayout $ do
-    setTitle "Two Wrongs :: Create New Entry"
+    setTitle "Two Wrongs, Create New Entry"
     $(widgetFile "entryform")
 
 postNewR :: Handler Html
@@ -62,7 +70,7 @@ postNewR = do
     _ -> setMessage "Invalid form submission, check for errors"
         
   defaultLayout $ do
-    setTitle "Two Wrongs :: Create New Entry"
+    setTitle "Two Wrongs, Create New Entry"
     $(widgetFile "entryform")
 
 
@@ -72,7 +80,7 @@ getEditR slug = do
   entry <- fmap entityVal (runDB (getBy404 (UniqueSlug slug)))
   (formFields, enctype) <- generateFormPost (entryForm (Just entry))
   defaultLayout $ do
-    setTitle "Two Wrongs :: Edit Entry"
+    setTitle "Two Wrongs, Edit Entry"
     $(widgetFile "entryform")
 
 postEditR :: Text -> Handler Html
@@ -88,7 +96,7 @@ postEditR slug = do
     _ -> setMessage "Invalid form submission, check for errors"
         
   defaultLayout $ do
-    setTitle "Two Wrongs :: Create New Entry"
+    setTitle "Two Wrongs, Edit Entry"
     $(widgetFile "entryform")
 
 
@@ -103,7 +111,7 @@ getAuthorsR = do
 
   authors <- fmap (map entityVal) (runDB (selectList [] [Desc AuthorsId]))
   defaultLayout $ do
-    setTitle "Two Wrongs :: Authorized Authors"
+    setTitle "Two Wrongs, Authorized Authors"
     $(widgetFile "authors")
 
 postAuthorsR :: Handler Html
@@ -119,7 +127,7 @@ postAuthorsR = do
         
   authors <- fmap (map entityVal) (runDB (selectList [] [Desc AuthorsId]))
   defaultLayout $ do
-    setTitle "Two Wrongs :: Authorized Authors"
+    setTitle "Two Wrongs, Authorized Authors"
     $(widgetFile "authors")
 
 

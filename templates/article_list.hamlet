@@ -2,16 +2,18 @@
 $if null entries
     <p>Nothing to see here yet
 $else
-    <ul>
-        $forall entry <- entries
-            <li>
-                $maybe published <- entryPublished entry
-                    <date>
-                        <i .fa .fa-sm .fa-clock-o>
-                        #{showGregorian published}
+    <row>
+        <ul>
+            $forall entry <- entries
+                <li>
+                    $maybe published <- entryPublished entry
+                        <date .col-sm-4>
+                            <i .fa .fa-sm .fa-clock-o>
+                            #{showGregorian published}
 
-                <a href=@{EntryR (entrySlug entry)}>
-                    <i .fa .fa-sm .fa-bookmark>
-                    #{entryTitle entry}
+                    <div .col-sm-8>
+                        <a href=@{EntryR (entrySlug entry)}>
+                            <i .fa .fa-sm .fa-bookmark>
+                            #{entryTitle entry}
 
 

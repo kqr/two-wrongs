@@ -65,6 +65,8 @@ instance Yesod App where
         mmsg <- getMessage
         authed <- maybe False (const True) <$> maybeAuthId
 
+        let navigation = $(widgetFile "navigation")
+
         -- We break up the default layout into two components:
         -- default-layout is the contents of the body tag, and
         -- default-layout-wrapper is the entire page. Since the final
@@ -75,6 +77,8 @@ instance Yesod App where
             addStylesheetRemote "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
             addStylesheetRemote "http://cloud.webtype.com/css/bfc07ec5-8efd-4b0d-b1e1-7fb291d9edb0.css"
             addStylesheetRemote "http://fonts.googleapis.com/css?family=Droid+Sans+Mono"
+            addStylesheetRemote "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+            addScriptRemote "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"
             $(widgetFile "standard")
         withUrlRenderer $(hamletFile "templates/base.hamlet")
 
