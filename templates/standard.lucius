@@ -167,6 +167,12 @@ img {
     clear: both;
 }
 
+blockquote {
+    border-left: 4px solid #f9c56b;
+    padding-left: 2em;
+    margin-left: 8px;
+}
+
 hr {
     margin-top: 64px;
     margin-bottom: 64px;
