@@ -183,6 +183,7 @@ kbd {
     font-size: 0.7em;
     background-color: #eee;
     padding: 4px;
+    color: #000;
 }
 
 img {

@@ -64,6 +64,7 @@ instance Yesod App where
         master <- getYesod
         mmsg <- getMessage
         authed <- maybe False (const True) <$> maybeAuthId
+        authedAuthor <- isAuthor
 
         let navigation = $(widgetFile "navigation")
 

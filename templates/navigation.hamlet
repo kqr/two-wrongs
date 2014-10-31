@@ -5,7 +5,7 @@
         <a href=@{HomeR}>Home
     <li>
         <a href="@{AboutR}">About
-    $if authed
+    $if authedAuthor
         <li>
             <a href=@{DraftsR}>Drafts
         <li>
