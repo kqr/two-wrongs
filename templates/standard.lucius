@@ -23,6 +23,16 @@ a {
     a {
         color: #aaa;
     }
+
+    #signin {
+        margin: 0;
+        padding: 0;
+        border: none;
+        color: #aaa;
+        background: none;
+        font-size: 22px;
+        cursor: pointer;
+    }
 }
 
 #message {

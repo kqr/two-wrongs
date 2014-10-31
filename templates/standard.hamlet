@@ -6,6 +6,11 @@ $maybe msg <- mmsg
         <a href=@{AuthR LogoutR}>
             <i .fa .fa-sm .fa-unlock>
     $else
-        <a href=@{AuthR LoginR}>
-            <i .fa .fa-sm .fa-lock>
+        <form method="get" action="@{AuthR forwardUrl}">
+            <input type="hidden" name="openid_identifier" value="https://openid.stackexchange.com/">
+            <button #signin type="submit">
+                <i .fa .fa-sm .fa-lock>
 ^{widget}
+
+
+

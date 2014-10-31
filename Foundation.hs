@@ -89,6 +89,8 @@ instance Yesod App where
 
 
     -- Routes requiring authentication include *any* write request
+    -- But don't require authorization to access the authentication. That would be silly.
+    isAuthorized (AuthR _) _    = return Authorized
     isAuthorized _         True = requiresAuthor
     isAuthorized AuthorsR  _    = requiresAuthor
     isAuthorized NewR      _    = requiresAuthor
