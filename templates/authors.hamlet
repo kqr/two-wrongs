@@ -12,7 +12,7 @@ $if null authors
 $else
 <p>Registered authors:
 <ul>
-    $forall author <- authors
+    $forall Entity _ author <- authors
         <li>#{authorsUid author}
 
 

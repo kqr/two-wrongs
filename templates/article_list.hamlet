@@ -4,7 +4,7 @@ $if null entries
 $else
     <row>
         <ul>
-            $forall entry <- entries
+            $forall Entity _ entry <- entries
                 <li>
                     $maybe published <- entryPublished entry
                         <date .col-sm-4>
