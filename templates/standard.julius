@@ -1,0 +1,10 @@
+
+(function($) {
+  $(function() {
+    $('#message a[data-action=close]').click(function() {
+      $(this).parent('#message').css('display', 'none');
+    });
+  });
+}(jQuery));
+
+

@@ -1,5 +1,8 @@
 $maybe msg <- mmsg
-    <div #message>#{msg}
+    <div #message>
+        #{msg}
+        <a .pull-right data-action="close">
+            <i .fa .fa-lg .fa-times-circle>
 
 <div #auth>
     $if authed

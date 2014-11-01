@@ -45,6 +45,14 @@ a {
     font-size: 14px;
     text-align: center;
     padding: 4px;
+    color: #852;
+    font-weight: bold;
+
+    i.fa {
+        color: #852;
+        margin-right: 24px;
+        cursor: pointer;
+    }
 }
 
 body > header {
