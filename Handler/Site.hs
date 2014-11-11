@@ -4,12 +4,14 @@ module Handler.Site where
 import Import
 import Yesod.Form.Bootstrap3
 import Data.Time.Calendar (showGregorian)
+import Data.Time.Clock (utctDay, getCurrentTime)
 
 
 
 getHomeR :: Handler Html
 getHomeR = do
-  entries <- runDB (selectList [EntryPublished !=. Nothing] [Desc EntryPublished])
+  today <- liftIO $ utctDay <$> getCurrentTime
+  entries <- runDB (selectList [EntryPublished <=. Just today] [Desc EntryPublished])
   defaultLayout $ do
     setTitle "Two Wrongs, Recent"
     $(widgetFile "article_list")
@@ -25,7 +27,8 @@ getAboutR =
 
 getDraftsR :: Handler Html
 getDraftsR = do
-  entries <- runDB (selectList [EntryPublished ==. Nothing] [Asc EntryId])
+  today <- liftIO $ utctDay <$> getCurrentTime
+  entries <- runDB (selectList ([EntryPublished ==. Nothing] ||. [EntryPublished >. Just today]) [Asc EntryId])
   defaultLayout $ do
     setTitle "Two Wrongs, Drafts"
     $(widgetFile "article_list")

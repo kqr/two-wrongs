@@ -10,6 +10,9 @@ $else
                         <date .col-sm-4>
                             <i .fa .fa-sm .fa-clock-o>
                             #{showGregorian published}
+                    $nothing
+                        <div .col-sm-4>
+                            <i .fa .fa-sm .fa-inbox>
 
                     <div .col-sm-8>
                         <a href=@{EntryR (entrySlug entry)}>
