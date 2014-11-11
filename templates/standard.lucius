@@ -150,6 +150,7 @@ kbd {
 img {
     padding: 4px;
     margin: 8px;
+    max-width: 100%;
 }
 .center-img {
     display: block;
