@@ -3,7 +3,7 @@ $if null entries
     <p>Nothing to see here yet
 $else
     <row>
-        <ul>
+        <ol .article-list>
             $forall Entity _ entry <- entries
                 <li>
                     $maybe published <- entryPublished entry
