@@ -1,0 +1,18 @@
+
+(function($) {
+  $(function() {
+    $('#hident2').on('keyup', function() {
+      var title = $(this).val();
+      $('#hident3').val(
+        title.toLowerCase()
+             .replace(/\s+/g, '-')
+             .replace(/[^\w\-]+/g, '')
+             .replace(/\-\-+/g, '-')
+             .replace(/^-/g, '')
+             .replace(/-$/g, '')
+      );
+    });
+  });
+}(jQuery));
+
+

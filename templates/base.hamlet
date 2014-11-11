@@ -27,7 +27,6 @@ $doctype 5
             <h1>
                 <a href=@{HomeR}>Two Wrongs
             <h2>(don't make a right)
-        <main role="main">
-          ^{pageBody pc}
+        ^{pageBody pc}
         <footer>
             <p>Sometimes I wonder if the guy who wrote that code was playing bingo with anti-patterns.

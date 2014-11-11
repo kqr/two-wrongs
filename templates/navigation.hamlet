@@ -1,0 +1,12 @@
+<h1>Go to...
+
+<ul>
+    <li>
+        <a href=@{HomeR}>Home
+    <li>
+        <a href="@{AboutR}">About
+    $if authedAuthor
+        <li>
+            <a href=@{DraftsR}>Drafts
+        <li>
+            <a href=@{NewR}>New

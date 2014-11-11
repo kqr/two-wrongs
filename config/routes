@@ -4,11 +4,12 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
-/             HomeR        GET
-/authors      AuthorsR     GET POST
-/new          NewR         GET POST
-/edit/#Text   EditR        GET POST
-/drafts       DraftsR      GET
-!/#Text       EntryR       GET
+/               HomeR        GET
+/about          AboutR       GET
+/authors        AuthorsR     GET POST
+/new            NewR         GET POST
+/edit/#EntryId  EditR        GET POST
+/drafts         DraftsR      GET
+!/#Text         EntryR       GET
 
 

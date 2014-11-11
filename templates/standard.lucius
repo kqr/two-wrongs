@@ -2,7 +2,6 @@
 body {
     font-family: WhitmanDisplay;
     font-size: 22px;
-    margin: 12px;
 }
 
 a {
@@ -23,6 +22,16 @@ a {
     a {
         color: #aaa;
     }
+
+    #signin {
+        margin: 0;
+        padding: 0;
+        border: none;
+        color: #aaa;
+        background: none;
+        font-size: 22px;
+        cursor: pointer;
+    }
 }
 
 #message {
@@ -36,6 +45,14 @@ a {
     font-size: 14px;
     text-align: center;
     padding: 4px;
+    color: #852;
+    font-weight: bold;
+
+    i.fa {
+        color: #852;
+        margin-right: 24px;
+        cursor: pointer;
+    }
 }
 
 body > header {
@@ -51,13 +68,46 @@ body > header {
 
     h1 a {
         color: #000;
+        font-size: 18px;
+        font-weight: bold;
     }
     h2 {
         color: #aaa;
+        font-weight: bold;
     }
 
 }
 
+
+nav {
+    border-left: 1px solid #aaa;
+    padding-bottom: 20px;
+
+    h1 {
+        font-style: italic;
+    }
+
+    ul {
+        padding-left: 0;
+    }
+
+    li {
+        padding: 0;
+        margin-bottom: 2px !important;
+    }
+    
+    li a {
+        color: #fff;
+        background-color: #000;
+        display: block;
+        padding: 8px 16px 8px 16px;
+    }
+    li a:hover {
+        color: #fff;
+        background-color: #555;
+        text-decoration: none;
+    }
+}
 
 main {
     display: block;
@@ -65,22 +115,28 @@ main {
     margin-top: 0;
     margin-left: auto;
     margin-right: auto;
+}
 
-    ul {
-        list-style: none;
+ul {
+    list-style: none;
 
-        li {
-            margin-bottom: 0.3em;
-            date {
-                margin-right: 48px;
-            }
-        }
+    li {
+        margin-bottom: 0.3em;
     }
+}
 
-    textarea {
-        width: 100%;
-        height: 500px;
+ol.article-list {
+    list-style: none;
+    margin-top: 64px;
+
+    li {
+        margin-bottom: 0.3em;
     }
+}
+
+textarea {
+    width: 100%;
+    height: 500px !important;
 }
 
 article {
@@ -107,6 +163,8 @@ article {
             left: 0;
             text-align: left;
             color: #aaa;
+            margin-bottom: 0;
+
         }
 
         time {
@@ -124,7 +182,8 @@ article {
     h1 {
         text-align: center;
         font-size: 1.3em;
-        margin-top: 36px;
+        margin-top: 56px;
+        margin-bottom: 40px;
         font-weight: normal;
         font-style: italic;
     }
@@ -138,13 +197,25 @@ article {
         margin-top: 0;
     }
 
+    footer {
+        text-align: left;
+        border-top: 0;
+        width: 100%;
+        padding-top: 0;
+
+        ol {
+            list-style: none;
+            padding-left: 0;
+        }
+    }
 }
 
 kbd {
-    font-face: 'Droid Sans Mono';
+    font-face: 'Droid Sans Mono' !important;
     font-size: 0.7em;
     background-color: #eee;
     padding: 4px;
+    color: #000;
 }
 
 img {
@@ -156,6 +227,25 @@ img {
     display: block;
     margin: 32px auto 32px auto;
     clear: both;
+}
+
+blockquote {
+    font-size: 100%;
+    border-left: 4px solid #f9c56b;
+    padding-left: 2em;
+    margin-left: 8px;
+    margin-top: 18px;
+}
+
+code {
+    font-family: 'Droid Sans Mono' !important;
+    color: #000;
+    font-size: 16px;
+}
+
+pre {
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 hr {

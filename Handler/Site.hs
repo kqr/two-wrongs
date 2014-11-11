@@ -9,27 +9,35 @@ import Data.Time.Calendar (showGregorian)
 
 getHomeR :: Handler Html
 getHomeR = do
-  entries <- fmap (map entityVal) (runDB (selectList [EntryPublished !=. Nothing] [Desc EntryPublished]))
+  entries <- runDB (selectList [EntryPublished !=. Nothing] [Desc EntryPublished])
   defaultLayout $ do
-    setTitle "Two Wrongs"
+    setTitle "Two Wrongs, Recent"
     $(widgetFile "article_list")
+
+
+getAboutR :: Handler Html
+getAboutR =
+  defaultLayout $ do
+    setTitle "Two Wrongs, About"
+    $(widgetFile "about")
+
 
 
 getDraftsR :: Handler Html
 getDraftsR = do
-  entries <- fmap (map entityVal) (runDB (selectList [EntryPublished ==. Nothing] [Asc EntryId]))
+  entries <- runDB (selectList [EntryPublished ==. Nothing] [Asc EntryId])
   defaultLayout $ do
-    setTitle "Two Wrongs"
+    setTitle "Two Wrongs, Drafts"
     $(widgetFile "article_list")
 
 
 
 getEntryR :: Text -> Handler Html
 getEntryR slug = do
-  entry <- fmap entityVal (runDB (getBy404 (UniqueSlug slug)))
+  entryRec <- runDB (getBy404 (UniqueSlug slug))
   author <- isAuthor
   defaultLayout $ do
-    setTitle ("Two Wrongs :: " <> toHtml (entryTitle entry))
+    setTitle ("Two Wrongs, " <> toHtml (entryTitle (entityVal entryRec)))
     $(widgetFile "detail")
 
 
@@ -46,7 +54,7 @@ getNewR = do
   let next = NewR
   (formFields, enctype) <- generateFormPost (entryForm Nothing)
   defaultLayout $ do
-    setTitle "Two Wrongs :: Create New Entry"
+    setTitle "Two Wrongs, Create New Entry"
     $(widgetFile "entryform")
 
 postNewR :: Handler Html
@@ -62,33 +70,33 @@ postNewR = do
     _ -> setMessage "Invalid form submission, check for errors"
         
   defaultLayout $ do
-    setTitle "Two Wrongs :: Create New Entry"
+    setTitle "Two Wrongs, Create New Entry"
     $(widgetFile "entryform")
 
 
-getEditR :: Text -> Handler Html
-getEditR slug = do
-  let next = EditR slug
-  entry <- fmap entityVal (runDB (getBy404 (UniqueSlug slug)))
+getEditR :: EntryId -> Handler Html
+getEditR eid = do
+  let next = EditR eid
+  entry <- runDB (get404 eid)
   (formFields, enctype) <- generateFormPost (entryForm (Just entry))
   defaultLayout $ do
-    setTitle "Two Wrongs :: Edit Entry"
+    setTitle "Two Wrongs, Edit Entry"
     $(widgetFile "entryform")
 
-postEditR :: Text -> Handler Html
-postEditR slug = do
-  let next = EditR slug
+postEditR :: EntryId -> Handler Html
+postEditR eid = do
+  let next = EditR eid
   ((result, formFields), enctype) <- runFormPost (entryForm Nothing)
   case result of
     FormSuccess entry -> do
-      key <- fmap entityKey (runDB (getBy404 (UniqueSlug slug)))
-      runDB (repsert key entry)
+      runDB (repsert eid entry)
       setMessage "Blog entry successfully edited"
-      redirect (EntryR slug)
+      redirect (EntryR (entrySlug entry))
+
     _ -> setMessage "Invalid form submission, check for errors"
         
   defaultLayout $ do
-    setTitle "Two Wrongs :: Create New Entry"
+    setTitle "Two Wrongs, Edit Entry"
     $(widgetFile "entryform")
 
 
@@ -101,9 +109,9 @@ getAuthorsR :: Handler Html
 getAuthorsR = do
   (formFields, enctype) <- generateFormPost authorForm
 
-  authors <- fmap (map entityVal) (runDB (selectList [] [Desc AuthorsId]))
+  authors <- runDB (selectList [] [Desc AuthorsId])
   defaultLayout $ do
-    setTitle "Two Wrongs :: Authorized Authors"
+    setTitle "Two Wrongs, Authorized Authors"
     $(widgetFile "authors")
 
 postAuthorsR :: Handler Html
@@ -117,9 +125,9 @@ postAuthorsR = do
         Nothing -> setMessage "An author with that UID already exists"
     _ -> setMessage "Invalid form submission, check for errors"
         
-  authors <- fmap (map entityVal) (runDB (selectList [] [Desc AuthorsId]))
+  authors <- runDB (selectList [] [Desc AuthorsId])
   defaultLayout $ do
-    setTitle "Two Wrongs :: Authorized Authors"
+    setTitle "Two Wrongs, Authorized Authors"
     $(widgetFile "authors")
 
 

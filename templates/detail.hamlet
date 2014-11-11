@@ -1,15 +1,17 @@
 
-<article>
-    <header>
-        <h1>#{entryTitle entry}
-        <address>by ~kqr
-        $if author
-            <a href=@{EditR (entrySlug entry)}>
-                <i .fa .fa-sm .fa-pencil-square-o>
-        $maybe published <- entryPublished entry
-            <time pubdate datetime=#{showGregorian published}>
-                #{showGregorian published}
+
+$with Entity entryId entry <- entryRec
+    <article>
+        <header>
+            <h1>#{entryTitle entry}
+            <address>by ~kqr
+            $if author
+                <a href=@{EditR entryId}>
+                    <i .fa .fa-sm .fa-pencil-square-o>
+            $maybe published <- entryPublished entry
+                <time pubdate datetime=#{showGregorian published}>
+                    #{showGregorian published}
 
 
-    #{entryContent entry}
+        #{entryContent entry}
 

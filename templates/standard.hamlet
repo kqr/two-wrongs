@@ -1,11 +1,24 @@
 $maybe msg <- mmsg
-    <div #message>#{msg}
+    <div #message>
+        #{msg}
+        <a .pull-right data-action="close">
+            <i .fa .fa-lg .fa-times-circle>
 
 <div #auth>
     $if authed
         <a href=@{AuthR LogoutR}>
             <i .fa .fa-sm .fa-unlock>
     $else
-        <a href=@{AuthR LoginR}>
-            <i .fa .fa-sm .fa-lock>
-^{widget}
+        <form method="get" action="@{AuthR forwardUrl}">
+            <input type="hidden" name="openid_identifier" value="https://openid.stackexchange.com/">
+            <button #signin type="submit">
+                <i .fa .fa-sm .fa-lock>
+<div .container>
+    <div .row>
+        <main .col-sm-8>
+            ^{widget}
+        <nav .col-sm-3 .col-sm-offset-1>
+            ^{navigation}
+
+
+

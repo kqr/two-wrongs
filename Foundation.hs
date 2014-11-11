@@ -64,6 +64,9 @@ instance Yesod App where
         master <- getYesod
         mmsg <- getMessage
         authed <- maybe False (const True) <$> maybeAuthId
+        authedAuthor <- isAuthor
+
+        let navigation = $(widgetFile "navigation")
 
         -- We break up the default layout into two components:
         -- default-layout is the contents of the body tag, and
@@ -75,6 +78,9 @@ instance Yesod App where
             addStylesheetRemote "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
             addStylesheetRemote "http://cloud.webtype.com/css/bfc07ec5-8efd-4b0d-b1e1-7fb291d9edb0.css"
             addStylesheetRemote "http://fonts.googleapis.com/css?family=Droid+Sans+Mono"
+            addStylesheetRemote "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+            addScriptRemote "http://code.jquery.com/jquery-latest.min.js"
+            addScriptRemote "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"
             $(widgetFile "standard")
         withUrlRenderer $(hamletFile "templates/base.hamlet")
 
@@ -89,6 +95,8 @@ instance Yesod App where
 
 
     -- Routes requiring authentication include *any* write request
+    -- But don't require authorization to access the authentication. That would be silly.
+    isAuthorized (AuthR _) _    = return Authorized
     isAuthorized _         True = requiresAuthor
     isAuthorized AuthorsR  _    = requiresAuthor
     isAuthorized NewR      _    = requiresAuthor
