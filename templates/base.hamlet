@@ -14,6 +14,8 @@ $doctype 5
 
         <meta name="viewport" content="width=device-width,initial-scale=1">
 
+        <link rel="apple-touch-icon-precomposed" href="/favicon-152.png">
+
         ^{pageHead pc}
 
         \<!--[if lt IE 9]>
