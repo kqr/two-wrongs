@@ -241,10 +241,9 @@ pre {
     margin-bottom: 16px;
 }
 
-ul {
+ul,ol {
     margin-top: 16px;
     margin-bottom: 16px;
-    margin-left: 2em;
 }
 
 hr {
