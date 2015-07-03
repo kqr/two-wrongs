@@ -49,6 +49,7 @@ library
                  , yesod-auth-oauth2             >= 0.0.10
                  , yesod-static                  >= 1.4.0
                  , yesod-form                    >= 1.4.0
+                 , yesod-newsfeed
                  , bytestring                    >= 0.9
                  , text                          >= 0.11
                  , persistent                    >= 2.0

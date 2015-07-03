@@ -5,6 +5,7 @@
 /robots.txt RobotsR GET
 
 /               HomeR        GET
+/atom           AtomR        GET
 /about          AboutR       GET
 /authors        AuthorsR     GET POST
 /new            NewR         GET POST

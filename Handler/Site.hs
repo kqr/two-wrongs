@@ -3,8 +3,10 @@ module Handler.Site where
 
 import Import
 import Yesod.Form.Bootstrap3
-import Data.Time.Calendar (showGregorian)
-import Data.Time.Clock (utctDay, getCurrentTime)
+import Yesod.AtomFeed
+import Data.Time.Calendar (showGregorian, Day(ModifiedJulianDay))
+import Data.Time.Clock (utctDay, getCurrentTime, UTCTime(UTCTime))
+import Data.Maybe (listToMaybe, maybe)
 
 
 
@@ -22,6 +24,35 @@ getAboutR =
   defaultLayout $ do
     setTitle "Two Wrongs, About"
     $(widgetFile "about")
+
+
+getAtomR :: Handler RepAtom
+getAtomR = do
+  today <- liftIO $ utctDay <$> getCurrentTime
+  entries <- runDB (selectList [EntryPublished <=. Just today] [Desc EntryPublished, LimitTo 20])
+
+  let noTime = maybe (UTCTime (ModifiedJulianDay 0) 0)
+
+  let atomEntry entry = FeedEntry
+        { feedEntryLink    = EntryR (entrySlug entry)
+        , feedEntryUpdated = noTime (flip UTCTime 0) (entryPublished entry)
+        , feedEntryTitle   = entryTitle entry
+        , feedEntryContent = entryContent entry
+        }
+
+  let atomEntries = map (atomEntry . entityVal) entries
+
+  atomFeed Feed
+    { feedTitle       = "Two Wrongs"
+    , feedLinkSelf    = AtomR
+    , feedLinkHome    = HomeR
+    , feedAuthor      = "kqr"
+    , feedUpdated     = noTime feedEntryUpdated (listToMaybe atomEntries)
+    , feedEntries     = atomEntries
+    , feedDescription = "Latest articles on Two Wrongs"
+    , feedLanguage    = "en-us"
+    }
+
 
 
 
