@@ -4,6 +4,8 @@
     <li>
         <a href=@{HomeR}>Home
     <li>
+        <a href=@{AtomR}>Feed
+    <li>
         <a href="@{AboutR}">About
     $if authedAuthor
         <li>
