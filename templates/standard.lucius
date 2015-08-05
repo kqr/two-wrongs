@@ -241,6 +241,11 @@ pre {
     margin-bottom: 16px;
 }
 
+pre code {
+    white-space: pre;
+    word-wrap: normal;
+}
+
 ul,ol {
     margin-top: 16px;
     margin-bottom: 16px;
